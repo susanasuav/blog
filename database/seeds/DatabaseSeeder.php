@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        //para resetear lo que tengamos y ejecutar estos seeders
+        //php artisan migrate:refresh --seed
+        $this->call(UsersTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
     }
 }

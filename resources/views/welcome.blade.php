@@ -65,7 +65,12 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <!--
+            php make:auth : crea login i registre
+            php artisan migrate para subir hacia la bbdd
+            antes hay que crearla y enlazarla en .env
+        -->
+        <div class="container">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -76,18 +81,26 @@
                     @endauth
                 </div>
             @endif
+        </div>
 
-            <div class="content">
+            <div class="content-fluid">
                 <div class="title m-b-md">
-                    Laravel
+                   Productes disponibles
+                </div>
+            <div class="row  p-5">
+                @foreach($products as $product)
+                <div class="col">
+                    {{$product->name}}
+                </div>
+                <div class="col">
+                    {{$product->description}}
+                </div>
+                    {{$product->long_description}}
+                <div class="col">
+                    {{$product->price}}
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                @endforeach
                 </div>
             </div>
         </div>
